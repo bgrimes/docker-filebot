@@ -1,4 +1,4 @@
-FROM openjdk:11-jre
+FROM openjdk:11.0-jre
 
 # install shell2http
 COPY --from=msoap/shell2http /app/shell2http /app/shell2http
