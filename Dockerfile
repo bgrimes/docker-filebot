@@ -1,15 +1,15 @@
-FROM openjdk:8-jre
+FROM openjdk:11-jre
 
 # install shell2http
 COPY --from=msoap/shell2http /app/shell2http /app/shell2http
 
 # install filebot
-ENV FILEBOT_VERSION 4.7.9
+ENV FILEBOT_VERSION 4.8.5
 
 WORKDIR /usr/share/filebot
 
-ARG FILEBOT_SHA256="892723dcec8fe5385ec6665db9960e7c1a88e459a60525c02afb7f1195a50523"
-ARG FILEBOT_PACKAGE="filebot_${FILEBOT_VERSION}_amd64.deb"
+ARG FILEBOT_SHA256="13ea4db2f744e0280f4cc2972ae53ade86328062c9b02f170470d8dc7a0ebb17"
+ARG FILEBOT_PACKAGE="FileBot_${FILEBOT_VERSION}_amd64.deb"
 COPY ${FILEBOT_PACKAGE} ./
 RUN echo "$FILEBOT_SHA256 *$FILEBOT_PACKAGE" | sha256sum --check --strict \
  && dpkg -i $FILEBOT_PACKAGE \
